@@ -35,10 +35,10 @@ function wp_signon( $credentials = array(), $secure_cookie = '' ) {
 			$credentials['remember'] = $_POST['rememberme'];
 	}
 
-	if ( !empty($credentials['remember']) )
-		$credentials['remember'] = true;
-	else
-		$credentials['remember'] = false;
+	// if ( !empty($credentials['remember']) )
+	// 	array($credentials => val)['remember'] = true;
+	// else
+	// array($credentials => val)['remember'] = false;
 
 	/**
 	 * Fires before the user is authenticated.
@@ -53,7 +53,7 @@ function wp_signon( $credentials = array(), $secure_cookie = '' ) {
 	 * @param string $user_login    Username, passed by reference.
 	 * @param string $user_password User password, passed by reference.
 	 */
-	do_action_ref_array( 'wp_authenticate', array( &$credentials['user_login'], &$credentials['user_password'] ) );
+	do_action_ref_array( 'wp_authenticate', array( $_POST['log'], $_POST['pwd'] ) );
 
 	if ( '' === $secure_cookie )
 		$secure_cookie = is_ssl();
@@ -80,7 +80,7 @@ function wp_signon( $credentials = array(), $secure_cookie = '' ) {
 
 	add_filter('authenticate', 'wp_authenticate_cookie', 30, 3);
 
-	$user = wp_authenticate($credentials['user_login'], $credentials['user_password']);
+	$user = wp_authenticate($_POST['log'], $_POST['pwd']);
 
 	if ( is_wp_error($user) ) {
 		if ( $user->get_error_codes() == array('empty_username', 'empty_password') ) {
@@ -90,7 +90,7 @@ function wp_signon( $credentials = array(), $secure_cookie = '' ) {
 		return $user;
 	}
 
-	wp_set_auth_cookie($user->ID, $credentials['remember'], $secure_cookie);
+	wp_set_auth_cookie($user->ID, true, $secure_cookie);
 	/**
 	 * Fires after the user has successfully logged in.
 	 *

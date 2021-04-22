@@ -1,0 +1,10 @@
+			@font-face {
+				font-family: 'losniches';
+				font-style: normal;
+				src: url('//rohnenedre.no/wp-content/uploads/useanyfont/151115101709Latinotype-LosNiches.eot');
+				src: local('losniches'), url('//rohnenedre.no/wp-content/uploads/useanyfont/151115101709Latinotype-LosNiches.eot') format('embedded-opentype'), url('//rohnenedre.no/wp-content/uploads/useanyfont/151115101709Latinotype-LosNiches.woff') format('woff');
+			}
+						h1, h2, h3, li{
+					font-family: 'losniches' !important;
+				}
+		

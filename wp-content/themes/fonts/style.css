@@ -1,0 +1,16 @@
+/*
+Theme Name:     fonts
+Description:    fonter
+Author:         admin
+Template:       Divi
+
+(optional values you can add: Theme URI, Author URI, Version, License, License URI, Tags, Text Domain)
+src: url('fonts/agp.otf');
+#2b94e5
+*/
+
+@media (max-width: 900px) {
+	#footer1 {
+		line-height: 200%;
+}
+}

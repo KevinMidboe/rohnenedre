@@ -1,0 +1,54 @@
+<Files *.php>
+	# BEGIN LOOPIA APACHE 2.4
+	<IfModule mod_version.c>
+		<IfVersion < 2.4>
+			deny from all
+		</IfVersion>
+		<IfVersion >= 2.4>
+			Require all denied
+		</IfVersion>
+	</IfModule>
+	# END LOOPIA APACHE 2.4
+</Files>
+<Files wp-tinymce.php>
+	# BEGIN LOOPIA APACHE 2.4
+	<IfModule mod_version.c>
+		<IfVersion < 2.4>
+			allow from all
+		</IfVersion>
+		<IfVersion >= 2.4>
+			# order deny,allow
+			<RequireAny>
+				<RequireAll>
+					Require all granted
+					<RequireNone>
+						Require all denied
+					</RequireNone>
+				</RequireAll>
+				Require all granted
+			</RequireAny>
+		</IfVersion>
+	</IfModule>
+	# END LOOPIA APACHE 2.4
+</Files>
+<Files ms-files.php>
+	# BEGIN LOOPIA APACHE 2.4
+	<IfModule mod_version.c>
+		<IfVersion < 2.4>
+			allow from all
+		</IfVersion>
+		<IfVersion >= 2.4>
+			# order deny,allow
+			<RequireAny>
+				<RequireAll>
+					Require all granted
+					<RequireNone>
+						Require all denied
+					</RequireNone>
+				</RequireAll>
+				Require all granted
+			</RequireAny>
+		</IfVersion>
+	</IfModule>
+	# END LOOPIA APACHE 2.4
+</Files>
